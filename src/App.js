@@ -1,22 +1,24 @@
-import { Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
+import ResponsiveAppBar from "./Components/ResponsiveAppBar";
 import Index from "./Pages/Index";
 import Validate from "./Pages/Validate";
 
+import { ThemeProvider } from "@mui/material/styles";
+import themeOptions from "./Theme";
+
 function App() {
   return (
-    <>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/validate">Validate</Link>
-      </nav>
+    <ThemeProvider theme={themeOptions}>
+      <ResponsiveAppBar></ResponsiveAppBar>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="validate" element={<Validate />}>
           <Route path=":ID" element={<Validate />} />
         </Route>
       </Routes>
-    </>
+    </ThemeProvider>
   );
 }
 
