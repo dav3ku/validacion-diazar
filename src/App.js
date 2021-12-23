@@ -7,6 +7,7 @@ import Validate from "./Pages/Validate";
 
 import { ThemeProvider } from "@mui/material/styles";
 import themeOptions from "./Theme";
+import Box from "@mui/material/Box";
 
 function App() {
   return (
