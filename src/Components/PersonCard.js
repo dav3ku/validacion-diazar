@@ -184,6 +184,7 @@ const PersonCard = ({ ID }) => {
               href={DOCUMENT.pdf}
               target="_blank"
               rel="noreferrer"
+              sx={{ textDecoration: "none", color: "#ff3d00" }}
             >
               Clic aquí para descargar en formato PDF
             </a>
