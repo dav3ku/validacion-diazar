@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Certificaciones Diazar",
+  "name": "App para validar certificaciones",
   "icons": [
     {
       "src": "favicon.ico",
