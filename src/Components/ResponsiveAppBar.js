@@ -16,8 +16,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
 const pages = [
-  { name: "Inicio", url: "/" },
   { name: "Validación", url: "/validate" },
+  { name: "Inicio", url: "/" },
 ];
 const settings = ["Perfil", "Cuenta", "Cerrar sesión"];
 
@@ -102,13 +102,23 @@ const ResponsiveAppBar = () => {
           >
             Certificaciones DIAZAR
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              flexDirection: "row-reverse",
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page.name}
-                sx={{ my: 2, color: "orange", display: "block" }}
+                variant="contained"
+                sx={{ my: 3, display: "block", marginRight: 2 }}
+                color="secondary"
+                as={Link}
+                to={page.url}
               >
-                <Link to={page.url}>{page.name}</Link>
+                {page.name}
               </Button>
             ))}
           </Box>
