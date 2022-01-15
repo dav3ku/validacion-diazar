@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import ResponsiveAppBar from "./Components/ResponsiveAppBar";
+import Inicio from "./Pages/Inicio";
+import Validate from "./Pages/Validate";
+import Footer from "./Components/Footer";
+
+import { ThemeProvider } from "@mui/material/styles";
+import themeOptions from "./Theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={themeOptions}>
+      <ResponsiveAppBar></ResponsiveAppBar>
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="validate" element={<Validate />}>
+          <Route path=":ID" element={<Validate />} />
+        </Route>
+      </Routes>
+      <Footer></Footer>
+    </ThemeProvider>
   );
 }
 
