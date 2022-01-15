@@ -2,8 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import ResponsiveAppBar from "./Components/ResponsiveAppBar";
-import Index from "./Pages/Index";
+import Inicio from "./Pages/Inicio";
 import Validate from "./Pages/Validate";
+import Footer from "./Components/Footer";
 
 import { ThemeProvider } from "@mui/material/styles";
 import themeOptions from "./Theme";
@@ -13,11 +14,12 @@ function App() {
     <ThemeProvider theme={themeOptions}>
       <ResponsiveAppBar></ResponsiveAppBar>
       <Routes>
-        <Route path="/" element={<Index />} />
+        <Route path="/" element={<Inicio />} />
         <Route path="validate" element={<Validate />}>
           <Route path=":ID" element={<Validate />} />
         </Route>
       </Routes>
+      <Footer></Footer>
     </ThemeProvider>
   );
 }
