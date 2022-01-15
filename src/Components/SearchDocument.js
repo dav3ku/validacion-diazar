@@ -53,7 +53,7 @@ const SearchDocument = () => {
           <CardMedia
             component="img"
             alt="ID de registro"
-            image="https://firebasestorage.googleapis.com/v0/b/validacion-de-conocimientos.appspot.com/o/aplication%2Fimages%2FAPP_example-ID.jpg?alt=media&token=9e302efb-f802-4e39-aeac-c081765e76bb"
+            image={require("../Images/APP_example-ID.jpg")}
           />
         </Grid>
       </Grid>
