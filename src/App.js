@@ -5,6 +5,7 @@ import ResponsiveAppBar from "./Components/ResponsiveAppBar";
 import Inicio from "./Pages/Inicio";
 import Validate from "./Pages/Validate";
 import Footer from "./Components/Footer";
+import Login from "./Pages/Login";
 
 import { ThemeProvider } from "@mui/material/styles";
 import themeOptions from "./Theme";
@@ -18,6 +19,7 @@ function App() {
         <Route path="validate" element={<Validate />}>
           <Route path=":ID" element={<Validate />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer></Footer>
     </ThemeProvider>
