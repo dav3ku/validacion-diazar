@@ -16,8 +16,54 @@ import Google from "../Images/social-google.svg";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
+import { db } from "../Firebase/FirebaseConfig";
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+const searchUser = async (user) => {
+  const userRef = doc(db, "users", user.uid);
+  const userData = await getDoc(userRef);
+  if (!userData.exists()) {
+    await addUser(user);
+  }
+};
+
+const addUser = async (user) => {
+  const userRef = collection(db, "users");
+  await setDoc(doc(userRef, user.uid), {
+    email: user.email,
+    displayName: user.displayName,
+    photoURL: user.photoURL,
+    emailVerified: user.emailVerified,
+  });
+};
+
 const googleHandler = async () => {
-  console.error("Login");
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  await signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      searchUser(user);
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      console.log(
+        "Error Code: ",
+        errorCode,
+        "Error Message: ",
+        errorMessage,
+        email,
+        credential
+      );
+    });
 };
 
 const Login = () => {
@@ -81,7 +127,9 @@ const Login = () => {
           </Box>
           Acceder con Google
         </Button>
-        <Divider>Ó</Divider>
+        <div sx={{ width: "100%" }}>
+          <Divider>Ó</Divider>
+        </div>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
